@@ -1,0 +1,236 @@
+\section{化学动力学}
+\subsection{反应速率与速率方程}
+从动力学开始，我们开始讨论反应的快慢，类比力学，我们将一般反应 $aA + bB \rightarrow cC + dD$的平均反应速率$\langle rate \rangle$定义为某一反应物或产物的浓度在单位时间间的变化，瞬时速率为其极限：
+\begin{definition}[反应速率]
+$$\langle rate \rangle = \frac{\Delta c}{\Delta t}$$
+$$rate = \lim_{\Delta t \to 0} \frac{\Delta c}{\Delta t} = \frac{dc}{dt}$$
+归一化后，统一反应速率为：
+$$rate = -\frac{1}{a}\frac{d[\text{A}]}{dt} = -\frac{1}{b}\frac{d[\text{B}]}{dt} = \frac{1}{c}\frac{d[\text{C}]}{dt} = \frac{1}{d}\frac{d[\text{D}]}{dt} > 0$$
+负号表示反应物浓度随时间降低。
+\end{definition}
+
+而对于整体的反应而言，大量实验总结了化学反应速率与反应物浓度关联的方程：
+
+\begin{definition}[动力实验方程]
+化学反应开始时的速率与反应物的幂次成正比，：
+$$rate = k_{m+n}[\text{A}]^m[\text{B}]^n$$
+其中 $k$ 为速率常数，幂次$m$ 和 $n$ 为对反应物A和B的反应级数），总反应级数为 $m + n$。
+\end{definition}
+
+结合速率的定义，我们可以建立微分方程（微分速率定律），解得反应物浓度随时间变化的方程（积分速率定律），例如：
+
+对于不可逆一级反应：
+
+$$\text{A} \xrightarrow{k} \text{P}$$反应速率定义为反应物A的消耗速率，微分形式为：
+$$-\frac{\text{d}[\text{A}]}{\text{d}t} = k[\text{A}]$$将微分方程分离变量：
+$$\frac{\text{d}[\text{A}]}{[\text{A}]} = -k \text{d}t$$对两边积分：
+\begin{align*}
+\int_{[\text{A}]_0}^{[\text{A}]} \frac{\text{d}[\text{A}]}{[\text{A}]} &= -k \int_{0}^{t} \text{d}t \\
+\end{align*}
+即可得到积分速率定律：
+$$ln[\text{A}] = \ln[\text{A}]_0 - kt$$
+令$[\text{A}]=1/2[\text{A}]_0$，可得半衰期\(t_{1/2} = \frac{\ln 2}{k_1}\)。
+
+同理可以计算其他情况，给出下表：
+
+\begin{proposition}[零级、一级和二级反应的动力学特征]
+对于单反应物不可逆反应 $\text{A} \rightarrow \text{P}$，往往是零级、一级或二级反应，其重要的相关结果如下（其中 $[A]_0$ 为A的初始浓度）：
+   
+\begin{center}
+\begin{tabular}{c c c c c}
+    \toprule
+    反应级数 & 微分速率定律 & 积分速率定律 & 半衰期 \(t_{1/2}\) & 情况 \\
+    \midrule
+    零级反应 & \(v = k_0\) & \([\text{A}] = [\text{A}]_0 - k_0 t\) & \(t_{1/2} = \frac{[\text{A}]_0}{2k_0}\) & 大多数气-固表面过程 \\
+    一级反应 & \(v = k_1 [\text{A}]\) & \(\ln[\text{A}] = \ln[\text{A}]_0 - k_1 t\) & \(t_{1/2} = \frac{\ln 2}{k_1}\) & 重排、衰变、热分解 \\
+    二级反应 & \(v = k_2 [\text{A}]^2\) & \(\frac{1}{[\text{A}]} = \frac{1}{[\text{A}]_0} + k_2 t\) & \(t_{1/2} = \frac{1}{k_2 [\text{A}]_0}\) & / \\
+    \bottomrule
+\end{tabular}
+\end{center}
+值得注意的是，零级反应的速率以及一级反应的半衰期是定值。
+
+\end{proposition}
+
+\subsection{碰撞理论与反应机理}
+
+现在，我们从经验科学转至理论科学，以一种偏公理化的风格介绍碰撞理论：
+
+\begin{definition}[碰撞理论]
+\begin{enumerate}
+  \item 化学反应的实质是分子之间的碰撞；
+  \item 碰撞不一定是有效的，除非是特定能量区间的分子在合适取向下的碰撞；
+\end{enumerate}
+\end{definition}
+
+现在，我们逐步剖析上述概念，首先是碰撞频率，由Maxwell分布导出：$$Z_{\text{AB}} = n_{\text{A}} n_{\text{B}} \sigma_{AB}\sqrt{\frac{8 k_B T}{\mu \pi} }$$其中$n$为分子数密度；$\sigma$是有效碰撞面积，$\pi(r_{\text{A}}^2+r_{\text{B}}^2)$；$\mu$为约化质量，$(\frac{1}{m_{\text{A}}}+\frac{1}{m_{\text{B}}})^{-1}$；$k_B$为Boltzmann常量。显然，碰撞频率与密度（浓度）、面积、温度正相关，与 质量负相关。
+
+其次是所谓的能量合适，我们称能量在该区间的分子为活化分子，用双剑标$\ddagger$标注，在这个基础上，我们定义：
+
+\begin{definition}[Tolman活化能]
+活化能$E_a$定义为活化分子的平均能量与所有反应物分子的平均摩尔能量之差：$$ E_a = \left(\langle \varepsilon ^\ddagger \rangle - \langle \varepsilon  \rangle\right)N_A$$
+依照这个定义，正逆反应活化能之差为能量变。
+\end{definition}
+
+值得注意的是，我们表述的是“特定能量区间”而非“大于某个值”（类比将粘性球投掷在墙上，反而因为速度过大而反弹了）。所以，活化能可能为负，特别是在反应物高度活泼（比如自由基）的情况下。
+
+我们按照最经典的情况，即“能量大于某个值”，Boltzmann分布给出了该区间的分子权重，$$f = \exp (-\frac{E_a}{RT})$$
+
+最后，我们用$P$表示分子碰撞时合适取向的概率，越大的分子，越小的反应位点，其值越小。事实上，$P$也是能量的函数，这里高度简化了。
+
+我们将上述因子相乘：
+
+\begin{proposition}[有效碰撞频率]
+有效碰撞频率（$Z_{\text{eff}}$）是指单位体积单位时间内的有效碰撞次数，计算公式为：
+$$Z_{\text{eff}} = n_{\text{A}} n_{\text{B}} \sigma_{\text{AB}} P \sqrt{\frac{8 k_B T}{\mu \pi} } \exp (-\frac{E_a}{RT})$$
+\end{proposition}
+
+而在此之前，实验给出了如下的经验公式，相比于指数项，根号内的温度对速率影响较小，以至于当时实验几乎无法观测。出于同样的理由，也是一个良好的近似。
+
+\begin{proposition}[Arrhenius经验方程]
+$$k = A\exp\left(-\frac{E_a}{RT}\right)$$
+其中 $A$ 为指前因子。
+\end{proposition}
+
+
+这样的的一次碰撞产生了一个化学反应，是一个简单的过程：
+
+\begin{definition}[基元反应与反应机理]
+基元反应是一步完成的化学反应，在碰撞理论下可以被理解为一次有效碰撞。（参与分子数往往小于等于二，除非某些分子数密度极大，比如溶剂）
+
+反应机理是即一系列基元反应的按序罗列。
+\end{definition}
+
+化学反应的实质是电子云的流动。一般地，我们可以用弯曲箭头代表一对电子的流动（单箭头表示一个电子），用以表示机理。
+
+显然，电子倾向于从高能状态向低能状态演化（以下参见第四章）：
+
+\begin{definition}[亲核试剂与亲电试剂]
+  \begin{enumerate}
+    \item 亲核试剂$Nu$是电子对的给体，往往具有较高的$HOMO$；
+    \item 亲电试剂$E$是电子对的受体，往往具有较高的$LUMO$。
+  \end{enumerate}
+\end{definition}
+于是，箭头从亲核试剂出发打向亲电试剂。
+
+依照之前的讨论，碰撞频率正比于分子数密度，自然也正比于浓度，所以我们可以强化其动力实验方程：
+
+\begin{proposition}[质量作用定律]
+对于基元反应 $a\text{A} + b\text{B} +c\text{C}\rightarrow \text{产物}$，动力实验方程可直接根据反应物的计量系数写出：
+$$rate = k[\text{A}]^a[\text{B}]^b[\text{C}]^c$$
+\end{proposition}
+
+\subsection{过渡态理论与决速步}
+
+一个基元反应在反应进程-势能图上往往是一个先升后降的曲线，我们给曲线的各个部分命名如下：
+
+\begin{definition}[活化络合物]
+\begin{enumerate}
+  \item 始态（$S.M.$）：势能图的起点;
+  \item 终态（$pdts.$）：势能图的终点；
+  \item 过渡态（$T.S.$）：势能图的最高点，又称活化络合物。
+\end{enumerate}
+\end{definition}
+例如，对于基元反应 $\text{A}-\text{B} + \text{C} \rightarrow [\text{A}\cdots \text{B}\cdots \text{C}]^\ddagger \rightarrow \text{A} + \text{B}-\text{C}$，$[\text{A}\cdots \text{B}\cdots \text{C}]^\ddagger$ 为活化络合物。
+
+过渡态与反应物之间的（摩尔）能量差为能垒（$E_0$），依照定义，这是一个非负的数值。我们往往认为其与活化能近似相等。下文混用活化能与能垒。
+
+对于多步反应，中间体（$ints$）是两个过渡态之间势能最低点的称谓。一个复杂反应可以表示为：$$S.M.\longrightarrow T.S_1 \longrightarrow ints_1\longrightarrow T.S_2\longrightarrow ...\longrightarrow T.S_n \longrightarrow pdts.$$其中的每一步都可以写出质量作用定律。然而各个步骤的贡献并不相同，正如木桶效应表示的那样，慢步骤决定了整体的速率。
+
+例如：一氧化氮的氧化反应，其机理为：$$2\text{NO} + \text{O}_2 \longrightarrow [\text{NO} \cdots \text{NO}]^ \ddagger + \text{O}_2 \longrightarrow \text{N}_2\text{O}_2 + \text{O}_2 \longrightarrow  [\text{N}_2\text{O}_2 \cdots \text{O}_2]^\ddagger \longrightarrow 2\text{NO}_2 $$
+
+\begin{definition}[决速步]
+决速步（RDS）是多步反应机理中速率最小的基元反应，这往往意味着活化能最大。总反应的速率由决速步的速率决定，因为它是机理中最慢的步骤。
+\end{definition}
+
+在复杂反应的速率方程确定过程中，往往采取近似的方法，即平衡态近似与稳态近似：
+
+\begin{proposition}[平衡态近似]
+对于快速可逆步骤后接慢速速控步的反应机理，假设快速步骤处于快速预平衡（正、逆反应速率相等）。根据平衡常数计算快速步骤生成的中间物种浓度，再代入慢速步骤的速率方程，推导总速率定律（经验速率方程）。
+\end{proposition}
+
+\begin{example}[一氧化氮氧化过程的速率方程计算（平衡态近似）]
+一氧化氮氧化过程分为两步：
+
+1. 快：$2\text{NO} \rightleftharpoons  \text{N}_2\text{O}_2$：$k_{1}$，$k_{-1}$
+
+2. 慢：$\text{N}_2\text{O}_2 + \text{O}_2 \longrightarrow 2\text{NO}_2$：$k_2$
+
+快反应正逆反应平衡，此时：
+
+$$k_1[\text{NO}]^2 = k_{-1}[\text{N}_2\text{O}_2] \quad K = \frac{k_1}{k_{-1}} = \frac{[\text{N}_2\text{O}_2]}{[\text{NO}]^2}$$
+总反应速率由慢步骤决定：
+
+$$rate = k_2 [\text{N}_2\text{O}_2][\text{O}_2]$$
+将 $[\text{N}_2\text{O}_2]$ 代入速率方程：
+
+$$rate = k_2 \cdot \frac{k_1}{k_{-1}} [\text{NO}]^2 [\text{O}_2]$$
+令表观速率常数 $k^{obs} = k_1 k_2/k_{-1}$，简化得：
+
+$$rate = k^{obs} [\text{NO}]^2 [\text{O}_2]$$
+\end{example}
+
+除此之外，有一些反应无法假设平衡，此时可以使用：
+
+\begin{proposition}[稳态近似]
+某些反应过程中，假设中间产物的生成速率等于消耗速率，即中间产物的浓度随时间保持恒定。尤其适用于中间物浓度极低且变化极慢的反应。
+\end{proposition}
+
+\begin{example}[一氧化氮氧化过程的速率方程计算（稳态近似）]
+反应中，$\text{N}_2\text{O}_2$是中间体，其浓度近似不变，即：
+$$\frac{d[\text{N}_2\text{O}_2]}{dt} = k_1[\text{NO}]^2 - k_{-1}[\text{N}_2\text{O}_2] - k_2[\text{N}_2\text{O}_2][\text{O}_2] = 0$$
+解得：
+
+$$[\text{N}_2\text{O}_2] = \frac{k_1[\text{NO}]^2}{k_{-1} + k_2[\text{O}_2]}$$
+带入得:
+
+$$rate = k_2[\text{N}_2\text{O}_2][\text{O}_2] = \frac{k_1k_2[\text{NO}]^2[\text{O}_2]}{k_{-1} + k_2[\text{O}_2]}$$
+
+\end{example}
+
+相比于平衡态近似，稳态近似要求较少，适用范围更广，但是计算相应较为繁琐。
+\subsection{条件对化学反应速率的影响}
+
+从Arrhenius方程可以看出，$A$、$E_a$、$T$是影响化学反应速率常数的典型物理量，我们将分别讨论。
+
+首先是指前因子，其与碰撞相关，这里只罗列两种：
+
+\begin{proposition}[改变指前因子]
+  \begin{enumerate}
+    \item 接触面积：对于非均相反应，接触面积大（碾碎、超声）会显著提高反应速率；
+    \item 同位素效应：质量大的同位素有更大的约化质量，导致碰撞频率降低，体现为不活泼。
+  \end{enumerate}
+\end{proposition}
+
+其次是活化能，分为改变反应路径和改变分子势能两种：
+
+\begin{proposition}[改变活化能]
+  \begin{enumerate}
+    \item 催化剂：改变反应路径以改变活化能，典型的比如酶促反应；
+    \item 极性：化学反应中间体往往是离子，其在大极性溶剂更加稳定。
+  \end{enumerate}
+\end{proposition}
+
+\begin{example}[指前因子和活化能]
+  \begin{enumerate}
+    \item 重排反应中，处于相同化学环境的$\text{H}$总是比$\text{D}$优先发生重排；
+    \item 叔丁基溴与氢氧化钠反应，在乙醇中反应速度显著快于丙酮。
+  \end{enumerate}
+\end{example}
+
+值得注意的是温度。一般而言，温度越高，化学反应速率越快。然而，在一些情况恰恰相反，产生所谓的“负温度效应”。第一种情况是是改变温度后改变了反应路径（最经典的即酶促反应的失活），不再赘述。第二种情况为活化能为负，比如二氧化氮的二聚。但是出于同样的原因，反应速度极快，难以观测。
+
+活化能为基元反应的概念，但对于一个已知速率方程的反应，我们通过拼凑Arrhenius方程的方法计算得到“表观活化能$E_a^{obs}$”：
+
+\begin{example}[一氧化氮氧化（平衡态近似）的表观活化能]
+注意到表观反应速率常数的表达式：
+$$k^{obs} = \frac{k_1 k_2}{k_{-1}}$$
+结合$k_1 = A_1 e^{-E_{a1}/(RT)}, \quad k_{-1} = A_{-1} e^{-E_{a(-1)}/(RT)}, \quad k_2 = A_2 e^{-E_{a2}/(RT)} $
+整理得：
+$$k^{obs} = \frac{A_1 A_2}{A_{-1}} e^{-(E_{a1} + E_{a2} - E_{a(-1)})/(RT)}$$
+我们只关心活化能部分：
+$$E_a^{obs} = E_{a1} + E_{a2} - E_{a(-1)}$$
+\end{example}
+
+不难发现，如果$E_{a(-1)}$较大，反应的表观活化能为负。这也比较好理解，若表观活化能为负（默认各个反应活化能为正），则$E_{a(-1)}$必定大于$E_{a(1)}$，快反应焓变为负，在升温时平衡逆向移动。
+
+\newpage

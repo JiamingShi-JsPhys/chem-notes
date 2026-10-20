@@ -1,0 +1,238 @@
+\section{Chemical Kinetics}
+\subsection{Reaction Rate and Rate Equation}
+With chemical kinetics, we turn to the study of the speed (rate) of chemical reactions. Analogous to mechanics, we define the average reaction rate $\langle rate \rangle$ of a general reaction $aA + bB \rightarrow cC + dD$ as the change in concentration of a reactant or product per unit time. The instantaneous rate is the limit of the average rate as the time interval approaches zero:
+
+\begin{definition}[Reaction Rate]
+$$\langle rate \rangle = \frac{\Delta c}{\Delta t}$$
+$$rate = \lim_{\Delta t \to 0} \frac{\Delta c}{\Delta t} = \frac{\mathrm{d}c}{\mathrm{d}t}$$
+To ensure a single value for the reaction rate regardless of which species is monitored, we use the normalized rate:
+$$rate = -\frac{1}{a}\frac{\mathrm{d}[\text{A}]}{\mathrm{d}t} = -\frac{1}{b}\frac{\mathrm{d}[\text{B}]}{\mathrm{d}t} = \frac{1}{c}\frac{\mathrm{d}[\text{C}]}{\mathrm{d}t} = \frac{1}{d}\frac{\mathrm{d}[\text{D}]}{\mathrm{d}t} > 0$$
+The negative sign indicates that the concentration of reactants decreases with time.
+\end{definition}
+
+For most chemical reactions, experiments have established an empirical relationship between the reaction rate and the concentrations of the reactants:
+
+\begin{definition}[Empirical Rate Equation]
+The initial rate of a chemical reaction is proportional to the powers of the concentrations of the reactants:
+$$rate = k_{m+n}[\text{A}]^m[\text{B}]^n$$
+where $k$ is the rate constant, the exponents $m$ and $n$ are the reaction orders with respect to reactants A and B, respectively, and the overall reaction order is $m + n$.
+\end{definition}
+
+Combining the definition of reaction rate with the empirical rate equation, we can establish a differential equation (differential rate law) and solve it to obtain the concentration of reactants as a function of time (integrated rate law).
+
+For an irreversible first-order reaction:
+$$\text{A} \xrightarrow{k} \text{P}$$
+The reaction rate is defined as the rate of consumption of reactant A, with the differential form:
+$$-\frac{\mathrm{d}[\text{A}]}{\mathrm{d}t} = k[\text{A}]$$
+Separating variables in the differential equation:
+$$\frac{\mathrm{d}[\text{A}]}{[\text{A}]} = -k \mathrm{d}t$$
+Integrating both sides:
+\begin{align*}
+\int_{[\text{A}]_0}^{[\text{A}]} \frac{\mathrm{d}[\text{A}]}{[\text{A}]} &= -k \int_{0}^{t} \mathrm{d}t \\
+\end{align*}
+We obtain the integrated rate law:
+$$\ln[\text{A}] = \ln[\text{A}]_0 - kt$$
+Setting $[\text{A}] = \frac{1}{2}[\text{A}]_0$, we derive the half-life $t_{1/2} = \frac{\ln 2}{k_1}$.
+
+Similar calculations can be performed for other reaction orders, giving the results summarized in the table below:
+
+\begin{proposition}[Kinetic Characteristics of Zero-, First-, and Second-Order Reactions]
+For a single-reactant irreversible reaction $\text{A} \rightarrow \text{P}$, the key kinetic characteristics for common reaction orders are summarized below (where $[\text{A}]_0$ is the initial concentration of A):
+   
+\begin{center}
+\begin{tabular}{ccccc}
+    \toprule
+    Reaction Order & Differential Rate Law & Integrated Rate Law & Half-Life $t_{1/2}$ & Typical Examples \\
+    \midrule
+    Zero-order & $v = k_0$ & $[\text{A}] = [\text{A}]_0 - k_0 t$ & $t_{1/2} = \frac{[\text{A}]_0}{2k_0}$ & \makecell[c]{Most gas-solid \\ surface reactions} \\
+    First-order & $v = k_1 [\text{A}]$ & $\ln[\text{A}] = \ln[\text{A}]_0 - k_1 t$ & $t_{1/2} = \frac{\ln 2}{k_1}$ & \makecell[c]{Radioactive decay, \\ thermal decomposition, \\ isomerization} \\
+    Second-order & $v = k_2 [\text{A}]^2$ & $\dfrac{1}{[\text{A}]} = \dfrac{1}{[\text{A}]_0} + k_2 t$ & $t_{1/2} = \dfrac{1}{k_2 [\text{A}]_0}$ & Dimerization reactions \\
+    \bottomrule
+\end{tabular}
+\end{center}
+Notably, the rate of a zero-order reaction is constant, and the half-life of a first-order reaction is independent of the initial concentration.
+
+\end{proposition}
+
+\subsection{Collision Theory and Reaction Mechanism}
+
+We now move from empirical kinetics to theoretical models, introducing collision theory in an axiomatic framework:
+
+\begin{definition}[Collision Theory]
+\begin{enumerate}
+  \item Chemical reactions occur via collisions between molecules;
+  \item Collisions are only effective if they occur between molecules with sufficient energy and in the correct relative orientation.
+\end{enumerate}
+\end{definition}
+
+We now break down the components of collision theory. First, the collision frequency, derived from the Maxwell distribution:
+$$Z_{\text{AB}} = n_{\text{A}} n_{\text{B}} \sigma_{AB}\sqrt{\frac{8 k_B T}{\mu \pi} }$$
+where $n$ is the number density of molecules; $\sigma$ is the collision cross-section, $\pi(r_{\text{A}}^2+r_{\text{B}}^2)$; $\mu$ is the reduced mass, $\left(\frac{1}{m_{\text{A}}}+\frac{1}{m_{\text{B}}}\right)^{-1}$; and $k_B$ is the Boltzmann constant. Clearly, collision frequency increases with molecular number density (concentration), collision cross-section, and temperature, and decreases with increasing molecular mass.
+
+Next, the energy requirement for a collision to be effective. We refer to molecules with sufficient energy to react as activated molecules, denoted by the double dagger $\ddagger$. On this basis, we define:
+
+\begin{definition}[Tolman Activation Energy]
+Activation energy $E_a$ is defined as the difference between the average molar energy of activated molecules and the average molar energy of all reactant molecules:
+$$ E_a = \left(\langle \varepsilon ^\ddagger \rangle - \langle \varepsilon  \rangle\right)N_A$$
+According to this definition, the difference between the activation energies of the forward and reverse reactions is equal to the molar internal energy change of the reaction.
+\end{definition}
+
+It is important to note that we refer to a "specific energy range" rather than simply "energy greater than a threshold value". For this reason, activation energy can be negative, especially for reactions involving highly reactive species such as free radicals.
+
+For the classical case where only collisions with energy greater than a threshold $E_a$ are effective, the Boltzmann distribution gives the fraction of molecules with sufficient energy:
+$$f = \exp \left(-\frac{E_a}{RT}\right)$$
+
+Finally, we use $P$ to denote the steric factor, the probability that colliding molecules have the correct orientation for reaction. Larger molecules and smaller reactive sites result in smaller values of $P$.
+
+Multiplying these factors together gives:
+
+\begin{proposition}[Effective Collision Frequency]
+The effective collision frequency ($Z_{\text{eff}}$) is the number of effective collisions per unit volume per unit time, calculated as:
+$$Z_{\text{eff}} = n_{\text{A}} n_{\text{B}} \sigma_{\text{AB}} P \sqrt{\frac{8 k_B T}{\mu \pi} } \exp \left(-\frac{E_a}{RT}\right)$$
+\end{proposition}
+
+Prior to the development of collision theory, Arrhenius proposed the following empirical equation based on experimental data. The temperature dependence of the pre-exponential term is much weaker than that of the exponential term, making this an excellent approximation for most reactions over a limited temperature range.
+
+\begin{proposition}[Arrhenius Empirical Equation]
+$$k = A\exp\left(-\frac{E_a}{RT}\right)$$
+where $A$ is the pre-exponential factor (or frequency factor), and $E_a$ is the activation energy.
+\end{proposition}
+
+A reaction that occurs in a single collision event is a simple process:
+
+\begin{definition}[Elementary Reaction and Reaction Mechanism]
+An elementary reaction is a chemical reaction that occurs in a single step, which can be understood as a single effective collision under collision theory. The molecularity of an elementary reaction is almost always 1 or 2; termolecular reactions are extremely rare except in high-pressure systems such as the atmosphere.
+
+A reaction mechanism is a sequential list of elementary reactions that together describe the overall transformation from reactants to products.
+\end{definition}
+
+The essence of a chemical reaction is the flow of electron density. We use curved arrows to represent the flow of a pair of electrons (single-barbed arrows represent the flow of a single electron) to describe a reaction mechanism.
+
+Electrons flow from a high-energy state to a low-energy state, leading to the following definitions:
+
+\begin{definition}[Nucleophile and Electrophile]
+  \begin{enumerate}
+    \item A nucleophile ($Nu$) is an electron-pair donor, typically with a high-energy highest occupied molecular orbital (HOMO);
+    \item An electrophile ($E$) is an electron-pair acceptor, typically with a low-energy lowest unoccupied molecular orbital (LUMO).
+  \end{enumerate}
+\end{definition}
+In a reaction mechanism, curved arrows start from the nucleophile and point to the electrophile.
+
+According to collision theory, the collision frequency is proportional to the number density of molecules, and thus to their concentration. This leads to the following fundamental law for elementary reactions:
+
+\begin{proposition}[Law of Mass Action]
+For an elementary reaction $a\text{A} + b\text{B} +c\text{C}\rightarrow \text{products}$, the rate law can be written directly from the stoichiometric coefficients of the reactants:
+$$rate = k[\text{A}]^a[\text{B}]^b[\text{C}]^c$$
+\end{proposition}
+
+\subsection{Transition State Theory and Rate-Determining Step}
+
+An elementary reaction is represented on a reaction coordinate diagram (potential energy vs. reaction progress) as a curve with a single maximum. We name the key features of this curve as follows:
+
+\begin{definition}[Activated Complex and Transition State]
+\begin{enumerate}
+  \item Reactants ($S.M.$): The starting point of the potential energy diagram;
+  \item Products ($pdts.$): The end point of the potential energy diagram;
+  \item Transition state ($T.S.$): The highest point on the potential energy curve, corresponding to the activated complex, a transient species with partial bonds.
+\end{enumerate}
+\end{definition}
+For example, for the elementary reaction $\text{A}-\text{B} + \text{C} \rightarrow [\text{A}\cdots \text{B}\cdots \text{C}]^\ddagger \rightarrow \text{A} + \text{B}-\text{C}$, $[\text{A}\cdots \text{B}\cdots \text{C}]^\ddagger$ is the activated complex at the transition state.
+
+The difference in molar energy between the transition state and the reactants is the activation energy (or energy barrier, $E_a$), which is always non-negative for an elementary reaction.
+
+For a multi-step reaction, an intermediate ($ints.$) is a species that is formed in one elementary step and consumed in a subsequent step, corresponding to a local minimum on the reaction coordinate diagram between two transition states. A complex reaction can be represented as:
+$$S.M.\longrightarrow T.S_1 \longrightarrow ints_1\longrightarrow T.S_2\longrightarrow...\longrightarrow T.S_n \longrightarrow pdts.$$
+Each step has its own rate law and activation energy. However, the overall rate of the reaction is determined by the slowest step, as described by the "bucket effect":
+
+\begin{definition}[Rate-Determining Step (RDS)]
+The rate-determining step (RDS) is the elementary reaction with the smallest rate (highest activation energy) in a multi-step reaction mechanism. The overall rate of the reaction is governed by the RDS, as it is the slowest step in the sequence.
+\end{definition}
+
+To derive the overall rate law for a complex reaction from its mechanism, we use two common approximation methods: the equilibrium approximation and the steady-state approximation.
+
+\begin{proposition}[Equilibrium Approximation]
+For a reaction mechanism consisting of a fast, reversible pre-equilibrium step followed by a slow, irreversible rate-determining step, we assume that the fast step remains in equilibrium throughout the reaction. We calculate the concentration of the intermediate species from the equilibrium constant of the fast step, then substitute this concentration into the rate law for the slow RDS to obtain the overall empirical rate law.
+\end{proposition}
+
+\begin{example}[Rate Law for NO Oxidation (Equilibrium Approximation)]
+The oxidation of nitric oxide proceeds via a two-step mechanism:
+
+1. Fast, reversible: $2\text{NO} \rightleftharpoons  \text{N}_2\text{O}_2$, with forward rate constant $k_{1}$ and reverse rate constant $k_{-1}$
+
+2. Slow, irreversible: $\text{N}_2\text{O}_2 + \text{O}_2 \longrightarrow 2\text{NO}_2$, with rate constant $k_2$
+
+The fast pre-equilibrium gives:
+$$k_1[\text{NO}]^2 = k_{-1}[\text{N}_2\text{O}_2] \quad K = \frac{k_1}{k_{-1}} = \frac{[\text{N}_2\text{O}_2]}{[\text{NO}]^2}$$
+The overall reaction rate is determined by the slow RDS:
+$$rate = k_2 [\text{N}_2\text{O}_2][\text{O}_2]$$
+Substituting the expression for $[\text{N}_2\text{O}_2]$ from the equilibrium into the rate law:
+$$rate = k_2 \cdot \frac{k_1}{k_{-1}} [\text{NO}]^2 [\text{O}_2]$$
+Defining the apparent rate constant $k^{obs} = \frac{k_1 k_2}{k_{-1}}$, we simplify to:
+$$rate = k^{obs} [\text{NO}]^2 [\text{O}_2]$$
+\end{example}
+
+For reactions where the pre-equilibrium assumption is not valid, we use the steady-state approximation:
+
+\begin{proposition}[Steady-State Approximation]
+For reactive intermediate species that are formed and consumed rapidly, we assume that their concentration remains approximately constant over time, i.e, their rate of formation equals their rate of consumption. This approximation is especially valid for intermediates with very low, steady concentrations.
+\end{proposition}
+
+\begin{example}[Rate Law for NO Oxidation (Steady-State Approximation)]
+In the reaction mechanism, $\text{N}_2\text{O}_2$ is a reactive intermediate. Applying the steady-state approximation:
+$$\frac{\mathrm{d}[\text{N}_2\text{O}_2]}{\mathrm{d}t} = k_1[\text{NO}]^2 - k_{-1}[\text{N}_2\text{O}_2] - k_2[\text{N}_2\text{O}_2][\text{O}_2] = 0$$
+Solving for $[\text{N}_2\text{O}_2]$:
+$$[\text{N}_2\text{O}_2] = \frac{k_1[\text{NO}]^2}{k_{-1} + k_2[\text{O}_2]}$$
+Substituting into the rate law for the second step:
+$$rate = k_2[\text{N}_2\text{O}_2][\text{O}_2] = \frac{k_1k_2[\text{NO}]^2[\text{O}_2]}{k_{-1} + k_2[\text{O}_2]}$$
+This reduces to the equilibrium approximation result when $k_{-1} \gg k_2[\text{O}_2]$.
+\end{example}
+
+The steady-state approximation has fewer restrictions and a wider range of applicability than the equilibrium approximation, but the resulting rate law is often more complex.
+
+\subsection{Effect of Conditions on Chemical Reaction Rate}
+
+From the Arrhenius equation, we see that the pre-exponential factor $A$, activation energy $E_a$, and temperature $T$ are the key factors affecting the rate constant of a chemical reaction. We discuss each separately.
+
+First, the pre-exponential factor $A$, which is related to the frequency and orientation of collisions:
+
+\begin{proposition}[Factors Affecting the Pre-Exponential Factor]
+  \begin{enumerate}
+    \item Contact area: For heterogeneous reactions, increasing the contact area between phases (e.g, by grinding solids or using ultrasound) significantly increases the reaction rate;
+    \item Isotope effect: Heavier isotopes have a larger reduced mass, leading to lower collision frequencies and slower reaction rates, resulting in lower reactivity.
+  \end{enumerate}
+\end{proposition}
+
+Next, the activation energy $E_a$, which can be altered by changing the reaction pathway or the stability of reactants, intermediates, or transition states:
+
+\begin{proposition}[Factors Affecting Activation Energy]
+  \begin{enumerate}
+    \item Catalysts: A catalyst increases the reaction rate by providing an alternative reaction pathway with a lower activation energy, without being consumed in the overall reaction. Enzymes are biological catalysts that are highly specific and efficient.
+    \item Solvent polarity: For reactions with charged or polar transition states, the activation energy is lower in polar solvents, which stabilize the charged intermediate or transition state.
+  \end{enumerate}
+\end{proposition}
+
+\begin{example}[Pre-Exponential Factor and Activation Energy Effects]
+  \begin{enumerate}
+    \item In rearrangement reactions, a hydrogen atom ($\text{H}$) always undergoes rearrangement preferentially over a deuterium atom ($\text{D}$) in the same chemical environment, due to the kinetic isotope effect.
+    \item The reaction of tert-butyl bromide with sodium hydroxide proceeds significantly faster in ethanol than in acetone, as the polar protic ethanol solvent stabilizes the carbocation intermediate, lowering the activation energy.
+  \end{enumerate}
+\end{example}
+
+Temperature has a particularly profound effect on reaction rates. In general, increasing temperature increases the reaction rate, as it increases the fraction of molecules with energy greater than the activation energy. However, in some cases, the opposite is true, resulting in a "negative temperature effect". The most common cause is that increasing temperature changes the reaction mechanism (e.g, the denaturation of enzymes, which deactivates the catalyst). A second, rarer cause is a reaction with a negative apparent activation energy, such as the dimerization of nitrogen dioxide.
+
+Activation energy is a concept for elementary reactions. For a complex reaction with a known overall rate law, we can define an "apparent activation energy $E_a^{obs}$" by fitting the rate constant to the Arrhenius equation:
+
+\begin{example}[Apparent Activation Energy of NO Oxidation]
+From the equilibrium approximation, the apparent rate constant is:
+$$k^{obs} = \frac{k_1 k_2}{k_{-1}}$$
+Combining with the Arrhenius equation for each rate constant: $k_1 = A_1 e^{-E_{a1}/(RT)}$, $k_{-1} = A_{-1} e^{-E_{a(-1)}/(RT)}$, $k_2 = A_2 e^{-E_{a2}/(RT)}$
+
+Rearranging gives:
+$$k^{obs} = \frac{A_1 A_2}{A_{-1}} e^{-(E_{a1} + E_{a2} - E_{a(-1)})/(RT)}$$
+The apparent activation energy is therefore:
+$$E_a^{obs} = E_{a1} + E_{a2} - E_{a(-1)}$$
+If $E_{a(-1)}$ is sufficiently large, the apparent activation energy can be negative, explaining the negative temperature effect for this reaction.
+\end{example}
+
+
+\newpage
